@@ -4,5 +4,5 @@ services:
     env: node
     branch: master
     buildCommand: npm install && npm run build
-    startCommand: serve -s build
-    staticPublishPath: build
+    startCommand: serve -s dist
+    staticPublishPath: dist
