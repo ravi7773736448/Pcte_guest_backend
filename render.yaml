@@ -1,8 +1,7 @@
-echo "services:
+services:
   - type: static
     name: guest-management
     env: node
     branch: master
     buildCommand: npm install && npm run build
     staticPublishPath: build
-" > render.yaml
