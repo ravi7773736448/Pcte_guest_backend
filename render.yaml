@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: guest-management
-    env: node
-    branch: master
-    buildCommand: npm install && npm run build
-    startCommand: serve -s dist
-    staticPublishPath: dist

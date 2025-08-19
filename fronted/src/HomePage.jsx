@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 function HomePage() {
-     const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-[Poppins] scroll-smooth">
@@ -22,7 +22,8 @@ function HomePage() {
               alt="Logo"
               className="h-16 w-16 rounded-md shadow-md"
             />
-            <h1 className="text-xl md:text-2xl font-extrabold text-red-500 tracking-wide">
+            <h1 className="text-xl md:text-2xl font-extrabold tracking-wide"
+                style={{ color: "#9B1C1C" }}>
               Guest Lecture Management
             </h1>
           </div>
@@ -33,7 +34,11 @@ function HomePage() {
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="hover:text-red-500 relative after:absolute after:content-[''] after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+                    className="hover:relative after:absolute after:content-[''] after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
+                    style={{
+                      color: "inherit",
+                      "--tw-after-bg": "#9B1C1C",
+                    }}
                   >
                     {item}
                   </a>
@@ -42,7 +47,8 @@ function HomePage() {
               <li>
                 <a
                   href="/login"
-                  className="bg-red-500 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-red-600 transition duration-300"
+                  className="text-white px-5 py-2 rounded-lg shadow-lg transition duration-300"
+                  style={{ backgroundColor: "#9B1C1C" }}
                 >
                   Login
                 </a>
@@ -50,9 +56,9 @@ function HomePage() {
             </ul>
           </nav>
 
- 
           <button
-            className="md:hidden text-3xl text-red-500"
+            className="md:hidden text-3xl"
+            style={{ color: "#9B1C1C" }}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
@@ -68,6 +74,7 @@ function HomePage() {
                     href={`#${item.toLowerCase()}`}
                     onClick={() => setMenuOpen(false)}
                     className="hover:text-red-500"
+                    style={{ color: "#9B1C1C" }}
                   >
                     {item}
                   </a>
@@ -76,7 +83,8 @@ function HomePage() {
               <li>
                 <a
                   href="/login"
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 transition"
+                  className="text-white px-4 py-2 rounded-lg shadow transition"
+                  style={{ backgroundColor: "#9B1C1C" }}
                   onClick={() => setMenuOpen(false)}
                 >
                   Login
@@ -87,12 +95,13 @@ function HomePage() {
         )}
       </header>
 
-
       <section
         id="home"
-        className="bg-gradient-to-r from-red-100 via-white to-red-100 flex flex-col md:flex-row items-center justify-center text-center md:text-left py-32 px-6 mt-20 gap-10"
+        className="flex flex-col md:flex-row items-center justify-center text-center md:text-left py-32 px-6 mt-20 gap-10"
+        style={{
+          background: `linear-gradient(to right, ${"#9B1C1C"}20, white, ${"#9B1C1C"}20)`,
+        }}
       >
-        {/* Left Content */}
         <div className="max-w-xl animate-fadeIn">
           <h2 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
             Manage Guest Lectures Easily
@@ -104,13 +113,15 @@ function HomePage() {
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
   <a
     href="/admin-login"
-    className=" text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 w-full md:w-auto text-center"
+    className="text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 w-full md:w-auto text-center"
+    style={{ backgroundColor: "#9B1C1C" }}
   >
     Login as Admin
   </a>
   <a
     href="/student-login"
-    className="bg-gray-200 text-gray-900 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-300 hover:scale-105 transition duration-300 w-full md:w-auto text-center"
+    className="text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 w-full md:w-auto text-center"
+    style={{ backgroundColor: "#9B1C1C" }}
   >
     Login as Student
   </a>
@@ -127,73 +138,83 @@ function HomePage() {
         </div>
       </section>
 
-     <section id="features" className="py-20 bg-white text-center px-4">
-  <h3 className="text-4xl font-bold mb-12 ">Features</h3>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    {[
-      {
-        icon: <FaCalendarAlt className=" text-6xl mb-4" />,
-        title: "Add & Manage Lectures",
-        desc: "Easily schedule and update guest lectures with a smooth interface.",
-      },
-      {
-        icon: <FaEye className=" text-6xl mb-4" />,
-        title: "View Upcoming Lectures",
-        desc: "Keep track of all upcoming guest lectures in real time.",
-      },
-      {
-        icon: <FaFileExcel className=" text-6xl mb-4" />,
-        title: "Attendance Reports via Excel",
-        desc: "Generate attendance reports in Excel format instantly.",
-      },
-    ].map((feature, i) => (
-      <div
-        key={i}
-        className="p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 border hover:border-red-400 transition duration-300 flex flex-col items-center text-center"
-      >
-        {feature.icon}
-        <h4 className="text-xl font-semibold mb-3">{feature.title}</h4>
-        <p className="text-gray-600">{feature.desc}</p>
-      </div>
-    ))}
-  </div>
-</section>
-
+      <section id="features" className="py-20 bg-white text-center px-4">
+        <h3 className="text-4xl font-bold mb-12">Features</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              icon: <FaCalendarAlt className="text-6xl mb-4" style={{ color: "#9B1C1C" }} />,
+              title: "Add & Manage Lectures",
+              desc: "Easily schedule and update guest lectures with a smooth interface.",
+            },
+            {
+              icon: <FaEye className="text-6xl mb-4" style={{ color: "#9B1C1C" }} />,
+              title: "View Upcoming Lectures",
+              desc: "Keep track of all upcoming guest lectures in real time.",
+            },
+            {
+              icon: <FaFileExcel className="text-6xl mb-4" style={{ color: "#9B1C1C" }} />,
+              title: "Attendance Reports via Excel",
+              desc: "Generate attendance reports in Excel format instantly.",
+            },
+          ].map((feature, i) => (
+            <div
+              key={i}
+              className="p-8 bg-white rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 border transition duration-300 flex flex-col items-center text-center"
+              style={{ borderColor: "#9B1C1C" }}
+            >
+              {feature.icon}
+              <h4 className="text-xl font-semibold mb-3">{feature.title}</h4>
+              <p className="text-gray-600">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section
         id="about"
         className="bg-gray-100 text-gray-900 py-16 text-center px-4"
       >
-        <h3 className="text-4xl font-bold mb-6 text-red-500">About</h3>
+        <h3 className="text-4xl font-bold mb-6" style={{ color: "#9B1C1C" }}>
+          About
+        </h3>
         <p className="max-w-3xl mx-auto text-gray-700 text-lg">
           A professional system designed to help colleges manage and streamline
           guest lectures effectively with a modern, intuitive interface.
         </p>
       </section>
 
-      <section className="bg-gradient-to-r from-red-500 to-pink-500 text-white text-center py-16">
+      <section
+        className="text-white text-center py-16"
+        style={{
+          background: `linear-gradient(to right, #9B1C1C, #9B1C1C)`,
+        }}
+      >
         <h3 className="text-3xl md:text-4xl font-bold mb-4">
           Ready to Simplify Guest Lectures?
         </h3>
         <a
           href="/signup"
-          className="bg-white text-red-500 font-bold px-8 py-4 rounded-full shadow hover:bg-gray-100 hover:scale-105 transition duration-300"
+          className="bg-white font-bold px-8 py-4 rounded-full shadow hover:bg-gray-100 hover:scale-105 transition duration-300"
+          style={{ color: "#9B1C1C" }}
         >
           Get Started
         </a>
       </section>
 
-
-      <footer className="bg-white text-gray-500 py-6 text-center text-sm md:text-base border-t border-red-400">
+      <footer
+        className="bg-white text-gray-500 py-6 text-center text-sm md:text-base border-t"
+        style={{ borderColor: "#9B1C1C" }}
+      >
         <p>© 2025 Guest Lecture Management</p>
         <div className="flex justify-center gap-6 mt-3">
-          <a href="/contact" className="hover:text-red-500 transition">
+          <a href="/contact" className="hover:transition" style={{ color: "#9B1C1C" }}>
             Contact
           </a>
-          <a href="/terms" className="hover:text-red-500 transition">
+          <a href="/terms" className="hover:transition" style={{ color: "#9B1C1C" }}>
             Terms
           </a>
-          <a href="/privacy" className="hover:text-red-500 transition">
+          <a href="/privacy" className="hover:transition" style={{ color: "#9B1C1C" }}>
             Privacy
           </a>
         </div>
@@ -202,4 +223,4 @@ function HomePage() {
   );
 }
 
-export default HomePage
+export default HomePage;

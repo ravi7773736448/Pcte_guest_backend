@@ -1,18 +1,15 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 
-const connectTOdb = async() => {
-    try{
-         await mongoose.connect('mongodb://127.0.0.1:27017/guestmanagementsystem')
-         console.log("connected to MongoDB");
-    }
-    
-    catch(err){
-        console.log("MongoDB Error",err);
-        
-    }
-    
-}
-
+const connectTOdb = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  }
+};
 
 module.exports = connectTOdb;
