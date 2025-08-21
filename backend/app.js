@@ -56,6 +56,10 @@ const verifyToken = (req, res, next) => {
 
 // ------------------------ ROUTES ------------------------ //
 
+app.get("/",function(req,res){
+  res.send("API is Working")
+});
+
 // ========================== LECTURE REQUEST ROUTES ========================== //
 
 // Student submits a lecture request
